@@ -73,7 +73,8 @@ router.post('/signup', function (req, res, next) {
                                 };
                                 let token = jwt.sign(profile, process.env.SECRET);
                                 res.status(200).json({
-                                    token: token
+                                    token: token,
+                                    id:profile.id
                                 });
                             })
                             .catch(function (err) {
