@@ -37,7 +37,7 @@ app.use(cors());
 //routing
 app.use('/', index);
 app.use('/auth', auth); // TODO: Restrict path
-app.use(expressJwt({secret: process.env.SECRET})); //, expressJwt({secret: 'CASECRETKEY'})
+// app.use(expressJwt({secret: process.env.SECRET})); //, expressJwt({secret: 'CASECRETKEY'})
 app.use('/agents', agents);
 app.use('/listings', listings);
 app.use('/resources', resources);
