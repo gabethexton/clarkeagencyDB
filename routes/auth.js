@@ -98,6 +98,7 @@ router.post('/login', function (req, res, next) {
     //check for existing user
     existingUser(agent.username)
         .then(function (result) {
+            console.log("result is:", result);
             console.log("Logging in: ", result[0].displayname);
             if(result.length === 0) {
                 console.log("Existing Agent Not Found.");

@@ -44,7 +44,20 @@ exports.seed = function (knex, Promise) {
                     bio: "Audrie Townsend is the office manager and Broker Associate. She is a graduate of Western State College (now Western State Colorado University) with a degree in Business Administration, emphases in Marketing and Entrepreneurship. She also received a minor in Communications. Audrie graduated in May, 2004, receiving Magna Cum Laude honors. She has worked for The Clarke Agency, Inc. as a personal assistant since 1997 and also works part-time for a financial institution. Audrie exhibits high ethical standards and integrity. She looks forward to assisting you on your journey in buying or selling Real Estate.",
                     created: new Date()
                 }),
-                knex.raw('ALTER SEQUENCE agents_id_seq RESTART WITH 4')
+                knex('agents').insert({
+                    id: 1,
+                    username: 'gabe',
+                    password: '1234',
+                    firstname: 'Gabriel',
+                    lastname: 'Thexton',
+                    displayname: 'Gabe',
+                    title: 'Web Guy',
+                    phone: "555.123.1234",
+                    email: "gabethexton@gmail.com",
+                    bio: "SuperShortTestBio",
+                    created: new Date()
+                }),
+                knex.raw('ALTER SEQUENCE agents_id_seq RESTART WITH 5')
             ]);
         });
 };
