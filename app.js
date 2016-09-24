@@ -31,7 +31,17 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({
     extended: false
 }));
+
+
+// use cors & configure cors headers
 app.use(cors());
+app.use(function () {
+    app.use(function (req, res, next) {
+        res.setHeader("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+    });
+});
 
 
 //routing
@@ -53,7 +63,9 @@ app.use(function (req, res, next) {
 
 if(app.get('env') === 'development') {
     app.use(function (err, req, res, next) {
-        res.status(err.status || 500).json({err:err});
+        res.status(err.status || 500).json({
+            err: err
+        });
     });
 }
 
