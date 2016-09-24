@@ -45,7 +45,7 @@ exports.seed = function (knex, Promise) {
                     created: new Date()
                 }),
                 knex('agents').insert({
-                    id: 1,
+                    id: 4,
                     username: 'gabe',
                     password: '1234',
                     firstname: 'Gabriel',
