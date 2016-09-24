@@ -35,6 +35,7 @@ router.get('/:id', function (req, res, next) {
         });
 });
 
+//LOOKING FOR POST NEW AGENT? - IT"S ON THE AUTH ROUTE!
 
 //Put agents/:id - update profile
 router.put('/:id', function (req, res, next) {
@@ -52,7 +53,7 @@ router.put('/:id', function (req, res, next) {
         email: req.body.email,
         bio: req.body.bio
     };
-    console.log("Updated Agend info is:", updatedAgent);
+    console.log("Updated Agent info is:", updatedAgent);
     // put updated agent to db
     return knex('agents')
         .where('id', id)

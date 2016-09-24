@@ -33,14 +33,13 @@ app.use(bodyparser.urlencoded({
 }));
 
 
-// use cors & configure cors headers
+// use cors (& configure cors headers?)
 app.use(cors());
 
 // app.use(function (req, res, next) {
 //     res.setHeader("Access-Control-Allow-Origin", "*");
 //     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 // });
-
 
 
 //routing

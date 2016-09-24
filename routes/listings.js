@@ -52,43 +52,47 @@ router.post('/', function (req, res, next) {
             if(data.length === 0) {
                 res.send("New listing failed to post.");
             } else {
-                //put details to details table for each note /w new id
-                for(var i = 0; i < listingDetails.length; i++) {
-                    let detail = {
-                        listing_id: id,
-                        detail: listingDetails[i]
-                    };
-                    knex('listing_details')
-                        .insert(detail)
-                        .returning('id')
-                        .then(function (data) { // TODO: MOVE THIS FUNCTION OUTSIDE THE LOOP
-                            console.log('New detail data is: ', data);
-                            if(data.length === 0) {
-                                console.log('Detail ' + i + ' failed to post.');
-                                listingErrors.push('Detail ' + i + ' failed to post.');
-                            } else {
-                                console.log('Detail ' + data + ' posted.');
-                            }
-                        });
+                if (listingDetails) {
+                    //put details to details table for each note /w new id
+                    for(var i = 0; i < listingDetails.length; i++) {
+                        let detail = {
+                            listing_id: id,
+                            detail: listingDetails[i]
+                        };
+                        knex('listing_details')
+                            .insert(detail)
+                            .returning('id')
+                            .then(function (data) { // TODO: MOVE THIS FUNCTION OUTSIDE THE LOOP
+                                console.log('New detail data is: ', data);
+                                if(data.length === 0) {
+                                    console.log('Detail ' + i + ' failed to post.');
+                                    listingErrors.push('Detail ' + i + ' failed to post.');
+                                } else {
+                                    console.log('Detail ' + data + ' posted.');
+                                }
+                            });
+                    }
                 }
-                //put pics to pics table for each pic /w new id
-                for(var j = 0; j < listingPics.length; j++) {
-                    let pic = {
-                        listing_id: id,
-                        url: listingPics[j]
-                    };
-                    knex('listing_pics')
-                        .insert(pic)
-                        .returning('id')
-                        .then(function (data) { // TODO: MOVE THIS FUNCTION OUTSIDE THE LOOP
-                            console.log('New pic data is: ', data);
-                            if(data.length === 0) {
-                                console.log('Pic ' + j + ' failed to post.');
-                                listingErrors.push('Pic ' + j + ' failed to post.');
-                            } else {
-                                console.log('Pic ' + data + ' posted.');
-                            }
-                        });
+                if (listingPics) {
+                    //put pics to pics table for each pic /w new id
+                    for(var j = 0; j < listingPics.length; j++) {
+                        let pic = {
+                            listing_id: id,
+                            url: listingPics[j]
+                        };
+                        knex('listing_pics')
+                            .insert(pic)
+                            .returning('id')
+                            .then(function (data) { // TODO: MOVE THIS FUNCTION OUTSIDE THE LOOP
+                                console.log('New pic data is: ', data);
+                                if(data.length === 0) {
+                                    console.log('Pic ' + j + ' failed to post.');
+                                    listingErrors.push('Pic ' + j + ' failed to post.');
+                                } else {
+                                    console.log('Pic ' + data + ' posted.');
+                                }
+                            });
+                    }
                 }
                 data.listingErrors = listingErrors;
                 res.json(data);
@@ -193,18 +197,6 @@ router.put('/:id', function (req, res, next) {
                         });
                 }
                 data.listingErrors = listingErrors;
-                res.json(data);
-            }
-        })
-    return knex('resources')
-        .where("id", id)
-        .update(resource)
-        .returning('*')
-        .then(function (data) {
-            console.log("Updated Resource is: ", data);
-            if(data.length === 0) {
-                res.send("Resource edit failed to post.");
-            } else {
                 res.json(data);
             }
         })
