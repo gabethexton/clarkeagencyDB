@@ -11,7 +11,18 @@ const jwt = require('jsonwebtoken');
 
 //Test res.send
 router.get('/', function (req, res, next) {
-    res.send("Welcome to the Agents route!");
+    return knex('agents')
+        .select('*')
+        .then(function (data) {
+            console.log("Select data is:", data);
+            res.json(data);
+        })
+        .catch(function (err) {
+            console.log("Error is: ", err);
+            res.status(500).json({
+                err: err
+            });
+        });
 });
 
 
