@@ -1,0 +1,13 @@
+'use strict';
+
+exports.up = function (knex, Promise) {
+    return knex.schema.table('agents', function (table) {
+        table.string('pic');
+    });
+};
+
+exports.down = function (knex, Promise) {
+    return knex.schema.table('agents', function (table) {
+        table.dropColumn('pic');
+    });
+};

@@ -62,6 +62,7 @@ router.put('/:id', function (req, res, next) {
         title: req.body.title,
         phone: req.body.phone,
         email: req.body.email,
+        pic: req.body.pic,
         bio: req.body.bio
     };
     console.log("Updated Agent info is:", updatedAgent);
