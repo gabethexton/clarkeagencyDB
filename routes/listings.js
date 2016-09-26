@@ -36,6 +36,7 @@ router.post('/', function (req, res, next) {
         state: req.body.state,
         zip: req.body.zip,
         price: req.body.price,
+        pic: req.body.pic,
         description: req.body.description,
         notes: req.body.notes,
     };
@@ -140,6 +141,7 @@ router.put('/:id', function (req, res, next) {
         state: req.body.state,
         zip: req.body.zip,
         price: req.body.price,
+        pic: req.body.pic,
         description: req.body.description,
         notes: req.body.notes,
     };

@@ -13,6 +13,7 @@ exports.seed = function(knex, Promise) {
             state:"CO",
             zip:"81230",
             price:18000,
+            pic: "http://clarkeagency.net/images/950UteLn-close.jpg",
             description: "This 3 bedroom/2 bath home was built in 2002 and is affordable & in good shape.",
             notes:"Deed restricted property so buyers must meet financial qualifications through the Gunnison County Housing Authority."
         }),
@@ -23,6 +24,7 @@ exports.seed = function(knex, Promise) {
             state:"CO",
             zip:"81230",
             price:365000,
+            pic: "http://clarkeagency.net/images/37AmigoWay.jpg",
             description:"Unique property with huge shop building/garage with nicely designed owner’s apartment upstairs.",
             notes:"Two bedroom apartment above 2000+ sq. ft. shop just 1 block from the commercial airport & 2 blocks from the non-commercial airport."
         }),
@@ -33,6 +35,7 @@ exports.seed = function(knex, Promise) {
             state:"CO",
             zip:"81230",
             price:565000,
+            pic: "http://clarkeagency.net/images/919CR17.jpg",
             description:"Gunnison River front home features large deck over the river, 1.3 wooded acres, water & fishing rights.",
             notes:"Log home with spacious rooms on a private road close to the Dos Rios Golf course. Balcony off master bedroom."
         }),
